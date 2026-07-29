@@ -1,0 +1,37 @@
+.ToggleSwitch {
+  width: 44px;
+  height: 27px;
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 4px 1px rgba(0 0 0 / 15%);
+  cursor: pointer;
+}
+
+ /* 토글 버튼 */
+.ToggleSwitch .ToggleButton {
+  /* 버튼은 토글보다 작아야함  */
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #1C63B7;
+}
+
+/* 체크박스가 체크되면 변경 이벤트 */
+.Toggle:checked ~ .ToggleSwitch {
+  background: #1C63B7;
+}
+
+.Toggle:checked ~ .ToggleSwitch .ToggleButton {
+  left: calc(100% - 24px);
+  background: #fff;
+}
+
+.ToggleSwitch, .toggleButton {
+  transition: all 0.2s ease-in;
+}

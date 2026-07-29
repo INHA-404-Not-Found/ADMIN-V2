@@ -1,0 +1,88 @@
+.CenterAlignDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: white;
+}
+
+.Part {   
+    font-family: "Pretendard-SemiBold";
+    width: 30%;
+    margin: auto;
+}
+
+.Logo_Container {
+    display: flex;
+    flex-direction: row;  /* 가로 나열 */
+
+    justify-content: center; /* 가로축 가운데 정렬 */
+    align-items: center;     /* 세로축 가운데 정렬 */
+    gap: 8px;
+    height: 110px;
+
+    color: #1C63B7;
+}
+
+.Input_txt {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #DADEE7;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    outline: none;
+    padding: 10px 12px;
+}
+
+.Input_txt:focus {
+    border-color: #0065B3;
+    box-shadow: 0 2px 6px rgba(0, 101, 179, 0.2);
+}
+
+.Input_Label_Container {
+    margin: 20px 0;
+}
+
+/* submit 버튼 */
+.Btn {
+    width: 100%;
+    padding: 10px;
+
+    color: #FFFFFF;
+    box-sizing: border-box;
+    border: 1px solid #215294;
+    background-color: #215294;
+    border-radius: 8px;
+}
+
+
+
+
+/* 비밀번호 보이고 안 보이고 바꾸는 번튼 관련 css */
+.Password_Container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.Password_Container input {
+    width: 100%;
+    padding-right: 60px;
+}
+
+.ShowBtn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #215294;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: "Pretendard-SemiBold";
+}
+
+.ShowBtn:hover {
+    text-decoration: underline;
+}

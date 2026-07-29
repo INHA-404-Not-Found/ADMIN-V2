@@ -1,0 +1,181 @@
+/* Main, ItemCategory 화면 css */
+
+.Container {
+    background-color: #ECF0F4;
+    padding: 20px 30px;
+}
+
+.Title_Container {
+    font-family: 'pretendard-SemiBold';
+    font-size: 25px;
+}
+
+.Search_Part {
+    display: flex;
+    flex-direction: column;
+}
+
+.Search {
+    display: flex;
+    flex-direction: row;
+}
+
+.State_Type_Select {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.Search_Input {
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #DADEE7;
+    align-items: center;
+}
+
+.Search_Input input {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 200px;
+    border: none;
+    outline: none;
+    background-color: #DADEE7;
+}
+
+.Search_Input button {
+    border: none;
+    background-color: #DADEE7;
+}
+
+.Add_Input {
+    display: flex;
+    flex-direction: row;    
+}
+
+.Add_Input input{
+    padding: 5px 10px;
+    margin-right: 15px;
+    border: 1px solid #DADEE7;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    align-items: center;
+    box-shadow: 1 1 1 1px #DADEE7;
+    outline: none;
+}
+
+.Add_Input button{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #DADEE7;
+    box-shadow: 1 1 1 1px #DADEE7;
+    color: black;
+    align-items: center;
+}
+
+.Add_Input button:hover{
+    background-color: #b0b3b8;
+}
+
+.Select_Option {
+    display: flex;
+    flex-direction: row; /* 가로 나열 */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.Select_Option button {
+    margin: 0 3px;
+    padding: 5px 10px;
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.Select_Option button:hover {
+    background-color: gray;
+    color: white;
+}
+
+.Select_Option button:active {
+    background-color: gray;
+    color: white;
+}
+
+
+/* checkbox 스타일 ----------------------------- */
+
+.Search_Option{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+
+.Checkbox_Style{
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.Checkbox_Style [type="radio"]{
+    display: none;
+}
+
+.Checkbox_Style span{
+    font-family: 'Pretendard-Thin';
+    text-align: center;
+    height: 30px;
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid gray;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: gray;
+}
+
+.Checkbox_Style [type="radio"]:checked + span{
+    border:3px solid #A8A8A8;
+    background-color: #A8A8A8;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.Checkbox_Style [type="radio"]:disabled + span{
+    text-align: center;
+    height:40px;
+    width:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #f3f3f3;
+    background-color: #f3f3f3;
+    color:#dcdcdc;
+    box-sizing: border-box;
+}
+
+
+/* checkbox 스타일 END -------------------------- */
+
+
+
+
+/* Footer 디자인 */
+
+.FooterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 10px;
+    color: #888;
+}
+
+.FooterContainer div {
+    margin: 5px;
+}

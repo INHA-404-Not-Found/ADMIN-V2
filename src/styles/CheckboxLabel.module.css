@@ -1,0 +1,56 @@
+/* checkbox 스타일 ----------------------------- */
+
+.Checkbox_Style {
+    display: flex;
+    flex-wrap: wrap; /* 부모보다 길어지면 다음 줄로 */
+    font-size: 12px;
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.Checkbox_Style [type="checkbox"]{
+    display: none;
+}
+
+.Checkbox_Style label{
+    display: inline-flex; /* 글자 길이에 맞게 크기 조절 */
+    margin: 0;
+}
+
+.Checkbox_Style span{
+    font-family: 'Pretendard-Thin';
+    text-align: center;
+    height: 30px;
+    display: inline-flex; /* 글자 길이에 맞게 폭 결정 */
+    align-items: center;
+    justify-content: center;
+    border:1px solid #dcdcdc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: black;
+    padding: 0 10px; /* 좌우 여백 */
+    white-space: nowrap; /* 줄바꿈 방지, 글자 길이에 맞게만 */
+}
+
+.Checkbox_Style [type="checkbox"]:checked + span{
+    border:3px solid #A8A8A8;
+    background-color: #A8A8A8;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+  
+.Checkbox_Style [type="checkbox"]:disabled + span{
+    text-align: center;
+    height:40px;
+    width:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #f3f3f3;
+    background-color: #f3f3f3;
+    color:#dcdcdc;
+    box-sizing: border-box;
+}
+
+
+/* checkbox 스타일 END -------------------------- */

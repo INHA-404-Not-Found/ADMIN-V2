@@ -1,0 +1,67 @@
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Pretendard', sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.Table thead {
+  background: #DADEE7;
+  color: #1a1a1a;
+  font-weight: 600;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.Table th, .Table td {
+  border: none; /* 기존 border 제거 */
+  margin: 0;
+  text-align: center;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+.Table tbody tr {
+  height: 50px;
+  background-color: white;
+  font-family: 'Pretendard-Light';
+  transition: background 0.3s ease, transform 0.25s ease-in-out;
+}
+
+.Table tbody tr:hover {
+  background: linear-gradient(90deg, #f0f2f7, #DADEE7);
+  transform: scale(1.015);
+}
+
+.Table tbody tr:nth-child(even) {
+  background-color: #f5f7fa;
+}
+
+/* 액션 버튼 스타일 */
+.Table tbody td.action {
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.85em;
+}
+
+.Table tbody td.action.modify {
+  color: #4a90e2;
+}
+
+.Table tbody td.action.modify:hover {
+  background-color: #e6f0ff;
+}
+
+.Table tbody td.action.delete {
+  color: #e94e4e;
+}
+
+.Table tbody td.action.delete:hover {
+  background-color: #ffe6e6;
+}

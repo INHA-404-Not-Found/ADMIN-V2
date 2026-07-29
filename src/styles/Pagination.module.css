@@ -1,0 +1,41 @@
+.Pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    gap: 20px;
+}
+
+.Pagination img {
+    height: 30px
+}
+
+.PaginationNum {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.PaginationNum button {
+    border: none;
+    font-size: 13px;
+    height: 35px;
+    width: 35px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.PaginationNum button:not(.SelectedPage):hover {
+    font-weight: bold;
+    color: #215294;
+}
+
+.SelectedPage {
+    background-color: #215294;
+    color: white;
+    border-radius: 1000px;
+}

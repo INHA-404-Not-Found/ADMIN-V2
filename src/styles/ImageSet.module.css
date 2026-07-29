@@ -1,0 +1,69 @@
+.Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Image_Container{
+    width: 30%;          /* 가로 폭은 그대로 */
+    height: 200px;       /* 원하는 고정 높이 */
+    position: relative;
+    margin: 0 10%;
+}
+
+.ImageView {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* cover → contain으로 변경 */
+    background-color: #f0f0f0; /* optional, 빈 공간 채우기 */
+}
+
+.Trash {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.Icon{
+    width: 25px;
+    height: 25px;
+}
+
+
+/* 업로드 버튼 */
+
+.UploadBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.UploadBtn label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 25px;
+    border: 1px solid #215294;
+    border-radius: 10px;
+    background-color: white;
+    color: #215294;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.UploadBtn label:hover {
+    background-color: #215294;
+    color: white;
+}
+
+.UploadBtn label div {
+    line-height: 25px;
+    font-size: 14px;
+}
