@@ -58,8 +58,8 @@ export default function ImageSetEdit({
 
   const getImageSrc = (img) => {
     if (typeof img === "string") {
-      // 서버에서 가져온 이미지 경로
-      return `https://be-v2.onrender.com${img}`;
+      // 서버가 완전한 URL을 내려주므로 그대로 사용
+      return img;
     } else if (img instanceof File) {
       // 업로드한 파일
       return URL.createObjectURL(img);

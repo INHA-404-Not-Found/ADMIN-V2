@@ -35,7 +35,7 @@ export default function ImageSet({ images = [] }) {
         {images.length > 0 ? (
           <img
             className={imageSet.ImageView}
-            src={`https://be-v2.onrender.com${images[currentIndex]}`}
+            src={images[currentIndex]}
             alt={`image-${currentIndex}`}
           />
         ) : (
