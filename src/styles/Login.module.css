@@ -1,88 +1,215 @@
-.CenterAlignDiv{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: white;
+.Page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
 }
 
-.Part {   
-    font-family: "Pretendard-SemiBold";
-    width: 30%;
-    margin: auto;
+/* 왼쪽: 인하대 남색 브랜드 면 -------------------------------- */
+
+.Brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 56px;
+  background-color: var(--navy-900);
+  color: #fff;
 }
 
-.Logo_Container {
-    display: flex;
-    flex-direction: row;  /* 가로 나열 */
-
-    justify-content: center; /* 가로축 가운데 정렬 */
-    align-items: center;     /* 세로축 가운데 정렬 */
-    gap: 8px;
-    height: 110px;
-
-    color: #1C63B7;
+.Brand_Eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.4);
 }
 
-.Input_txt {
-    box-sizing: border-box;
-    width: 100%;
-    border: 1px solid #DADEE7;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    transition: box-shadow 0.15s ease, border-color 0.15s ease;
-    outline: none;
-    padding: 10px 12px;
+.Brand_Badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  margin: 28px 0 24px;
+  border-radius: 50%;
+  background: #fff;
 }
 
-.Input_txt:focus {
-    border-color: #0065B3;
-    box-shadow: 0 2px 6px rgba(0, 101, 179, 0.2);
+.Brand_Badge img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.Brand_Title {
+  font-family: var(--font-bold);
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.Brand_Sub {
+  margin-top: 8px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.Brand_Foot {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* 오른쪽: 로그인 폼 ----------------------------------------- */
+
+.FormSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--card);
+}
+
+.Form {
+  width: 100%;
+  max-width: 340px;
+}
+
+.Form_Title {
+  margin: 0;
+  font-family: var(--font-semibold);
+  font-weight: normal;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.Form_Desc {
+  margin: 8px 0 32px;
+  font-size: 14px;
+  color: var(--text-3);
 }
 
 .Input_Label_Container {
-    margin: 20px 0;
+  margin-bottom: 18px;
+}
+
+.Label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.Input_txt {
+  box-sizing: border-box;
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
+  transition:
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+  outline: none;
+}
+
+.Input_txt::placeholder {
+  color: var(--text-3);
+}
+
+.Input_txt:focus {
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px var(--blue-050);
+}
+
+/* 학번은 식별자이므로 자릿수가 흔들리지 않게 */
+.Input_Id {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
 }
 
 /* submit 버튼 */
 .Btn {
-    width: 100%;
-    padding: 10px;
+  width: 100%;
+  height: 46px;
+  margin-top: 10px;
 
-    color: #FFFFFF;
-    box-sizing: border-box;
-    border: 1px solid #215294;
-    background-color: #215294;
-    border-radius: 8px;
+  color: #fff;
+  box-sizing: border-box;
+  border: none;
+  background-color: var(--blue-600);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-medium);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
 }
 
-
-
+.Btn:hover {
+  background-color: var(--blue-700);
+}
 
 /* 비밀번호 보이고 안 보이고 바꾸는 번튼 관련 css */
 .Password_Container {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.Password_Container input {
-    width: 100%;
-    padding-right: 60px;
+.Password_Container .Input_txt {
+  padding-right: 62px;
 }
 
 .ShowBtn {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    color: #215294;
-    font-size: 13px;
-    cursor: pointer;
-    font-family: "Pretendard-SemiBold";
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-3);
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .ShowBtn:hover {
-    text-decoration: underline;
+  color: var(--blue-600);
+}
+
+@media (max-width: 860px) {
+  .Page {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+    min-height: 100%;
+  }
+
+  .Brand {
+    padding: 36px 24px;
+  }
+
+  .Brand_Badge {
+    width: 64px;
+    height: 64px;
+    margin: 20px 0 18px;
+  }
+
+  .Brand_Badge img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .Brand_Title {
+    font-size: 28px;
+  }
+
+  .Brand_Foot {
+    display: none;
+  }
+
+  .FormSide {
+    padding: 36px 24px;
+  }
 }

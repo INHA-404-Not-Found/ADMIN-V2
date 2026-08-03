@@ -1,181 +1,295 @@
 /* Main, ItemCategory 화면 css */
 
 .Container {
-    background-color: #ECF0F4;
-    padding: 20px 30px;
+  box-sizing: border-box;
+  max-width: 1440px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 32px 36px 24px;
+
+  display: flex;
+  flex-direction: column;
 }
+
+/* 페이지 머리 --------------------------------------------------- */
 
 .Title_Container {
-    font-family: 'pretendard-SemiBold';
-    font-size: 25px;
+  margin: 0;
+  font-family: var(--font-semibold);
+  font-weight: normal;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
-.Search_Part {
-    display: flex;
-    flex-direction: column;
+.Page_Desc {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--text-3);
 }
 
-.Search {
-    display: flex;
-    flex-direction: row;
-}
+/* 검색 + 필터 --------------------------------------------------- */
 
-.State_Type_Select {
-    padding: 5px 10px;
-    border-radius: 5px;
+.Toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin: 24px 0 16px;
 }
 
 .Search_Input {
-    display: flex;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #DADEE7;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0 12px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.Search_Input:focus-within {
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px var(--blue-050);
 }
 
 .Search_Input input {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 200px;
-    border: none;
-    outline: none;
-    background-color: #DADEE7;
+  padding: 0;
+  margin: 0;
+  width: 260px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.Search_Input input::placeholder {
+  color: var(--text-3);
 }
 
 .Search_Input button {
-    border: none;
-    background-color: #DADEE7;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
 }
+
+.Search_Input button:hover {
+  opacity: 1;
+}
+
+.Search_Option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.State_Type_Select {
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+/* 상태 필터: 이어 붙인 세그먼트 컨트롤 */
+.Segmented {
+  display: flex;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background-color: #e7ecf3;
+}
+
+.Checkbox_Style {
+  font-size: 13px;
+}
+
+.Checkbox_Style [type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.Checkbox_Style span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  box-sizing: border-box;
+
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.Checkbox_Style span:hover {
+  color: var(--text);
+}
+
+.Checkbox_Style [type="radio"]:checked + span {
+  background-color: var(--card);
+  color: var(--text);
+  font-family: var(--font-semibold);
+  box-shadow: 0 1px 2px rgba(23, 34, 52, 0.12);
+}
+
+.Checkbox_Style [type="radio"]:focus-visible + span {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 2px;
+}
+
+/* 카테고리 추가 입력 -------------------------------------------- */
 
 .Add_Input {
-    display: flex;
-    flex-direction: row;    
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin: 24px 0 16px;
 }
 
-.Add_Input input{
-    padding: 5px 10px;
-    margin-right: 15px;
-    border: 1px solid #DADEE7;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    align-items: center;
-    box-shadow: 1 1 1 1px #DADEE7;
-    outline: none;
+.Add_Input input {
+  width: 280px;
+  height: 40px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.Add_Input button{
-    display: flex;
-    flex-direction: row;
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: none;
-    background-color: #DADEE7;
-    box-shadow: 1 1 1 1px #DADEE7;
-    color: black;
-    align-items: center;
+.Add_Input input:focus {
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px var(--blue-050);
 }
 
-.Add_Input button:hover{
-    background-color: #b0b3b8;
+.Add_Input button {
+  height: 40px;
+  padding: 0 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--blue-600);
+  color: #fff;
+  font-family: var(--font-medium);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
 }
+
+.Add_Input button:hover {
+  background-color: var(--blue-700);
+}
+
+/* 일괄 처리 바 -------------------------------------------------- */
 
 .Select_Option {
-    display: flex;
-    flex-direction: row; /* 가로 나열 */
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 12px;
+  min-height: 36px;
+}
+
+.Bulk_Count {
+  margin-right: 4px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.Bulk_Count strong {
+  font-family: var(--font-mono);
+  font-weight: normal;
+  color: var(--text);
 }
 
 .Select_Option button {
-    margin: 0 3px;
-    padding: 5px 10px;
-    background-color: #FFFFFF;
-    border: 1px solid gray;
-    border-radius: 10px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background-color: var(--card);
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
-.Select_Option button:hover {
-    background-color: gray;
-    color: white;
+.Select_Option button:hover:not(:disabled) {
+  border-color: var(--blue-600);
+  color: var(--blue-600);
 }
 
-.Select_Option button:active {
-    background-color: gray;
-    color: white;
+.Select_Option button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
-
-/* checkbox 스타일 ----------------------------- */
-
-.Search_Option{
-    display: flex;
-    flex-direction: row;
-    margin: 10px 0;
+.Select_Option button.Delete_Button:hover:not(:disabled) {
+  border-color: #f0c4c0;
+  background-color: var(--danger-bg);
+  color: var(--danger-fg);
 }
 
-.Checkbox_Style{
-    font-size: 12px;
-    margin-right: 5px;
+/* 표 카드 ------------------------------------------------------- */
+
+.Table_Card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+  /* clip은 스크롤 컨테이너를 만들지 않아 thead의 sticky가 살아있다 */
+  overflow: clip;
 }
-
-.Checkbox_Style [type="radio"]{
-    display: none;
-}
-
-.Checkbox_Style span{
-    font-family: 'Pretendard-Thin';
-    text-align: center;
-    height: 30px;
-    width: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border:1px solid gray;
-    background-color: white;
-    box-sizing: border-box;
-    border-radius: 20px;
-    color: gray;
-}
-
-.Checkbox_Style [type="radio"]:checked + span{
-    border:3px solid #A8A8A8;
-    background-color: #A8A8A8;
-    color: #FFFFFF;
-    font-weight: 700;
-}
-
-.Checkbox_Style [type="radio"]:disabled + span{
-    text-align: center;
-    height:40px;
-    width:100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border:1px solid #f3f3f3;
-    background-color: #f3f3f3;
-    color:#dcdcdc;
-    box-sizing: border-box;
-}
-
-
-/* checkbox 스타일 END -------------------------- */
-
-
-
 
 /* Footer 디자인 */
 
-.FooterContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.FooterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 
-    font-size: 10px;
-    color: #888;
+  margin-top: auto;
+  padding-top: 32px;
+
+  font-size: 11px;
+  color: var(--text-3);
 }
 
-.FooterContainer div {
-    margin: 5px;
+@media (max-width: 900px) {
+  .Container {
+    padding: 24px 18px;
+  }
+
+  .Search_Input input {
+    width: 100%;
+  }
+
+  .Search_Option {
+    flex-wrap: wrap;
+  }
 }

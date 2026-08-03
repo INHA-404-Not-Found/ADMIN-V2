@@ -1,41 +1,72 @@
 .Pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 40px;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 28px 0;
+  gap: 14px;
 }
 
-.Pagination img {
-    height: 30px
+.Arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.Arrow img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.Arrow:hover {
+  border-color: var(--blue-600);
+}
+
+.Arrow:hover img {
+  opacity: 0.9;
 }
 
 .PaginationNum {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-    gap: 10px;
+  gap: 6px;
 }
 
 .PaginationNum button {
-    border: none;
-    font-size: 13px;
-    height: 35px;
-    width: 35px;
-    font-size: 16px;
-    font-weight: normal;
+  height: 34px;
+  min-width: 34px;
+  padding: 0 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-2);
+  cursor: pointer;
 }
 
 .PaginationNum button:not(.SelectedPage):hover {
-    font-weight: bold;
-    color: #215294;
+  background-color: var(--blue-050);
+  color: var(--blue-600);
 }
 
 .SelectedPage {
-    background-color: #215294;
-    color: white;
-    border-radius: 1000px;
+  background-color: var(--blue-600);
+  color: #fff;
 }

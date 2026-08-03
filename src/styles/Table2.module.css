@@ -1,40 +1,44 @@
-/* Table2.module.css - 심플 디자인 */
+/* 팝업 안의 게시글 상세 / 입력 표 */
+
 .Table2 {
   width: 100%;
   border-collapse: collapse;
-  font-family: "Pretendard", sans-serif;
   font-size: 14px;
-  color: #333;
+  color: var(--text);
 }
 
-/* 헤더 */
+/* 왼쪽 항목 이름 */
 .Table2 th {
-  background-color: #f4f4f4;
-  font-weight: 600;
-  padding: 10px 12px;
+  width: 130px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+
+  font-family: var(--font-medium);
+  font-weight: normal;
+  font-size: 13px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+  color: var(--text-3);
+  word-break: keep-all;
 }
 
-/* 데이터 셀 */
+/* 오른쪽 값 */
 .Table2 td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #eee;
+  padding: 12px 0 12px 12px;
+  border-bottom: 1px solid var(--line-soft);
   vertical-align: middle;
-  background-color: white;
+  line-height: 1.5;
 }
 
-/* 체크박스 열 */
-.Table2 th:nth-child(1),
-.Table2 td:nth-child(1) {
-  width: 80px;
-  text-align: center;
+.Table2 tr:last-child th,
+.Table2 tr:last-child td {
+  border-bottom: none;
 }
 
 /* 제목 강조 */
 .Table2 td.title {
-  font-weight: 500;
-  color: #215294;
+  font-family: var(--font-medium);
+  color: var(--blue-600);
   cursor: pointer;
 }
 
@@ -43,23 +47,35 @@
 .Table2 textarea,
 .Table2 select {
   width: 100%;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
   box-sizing: border-box;
   outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.Table2 [type="text"]:focus,
+.Table2 textarea:focus,
+.Table2 select:focus {
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px var(--blue-050);
 }
 
 /* textarea 높이 */
 .Table2 textarea {
-  min-height: 80px;
+  min-height: 90px;
   resize: vertical;
+  font-family: inherit;
 }
 
 /* 체크박스 */
 .Table2 input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
+  accent-color: var(--blue-600);
   cursor: pointer;
 }

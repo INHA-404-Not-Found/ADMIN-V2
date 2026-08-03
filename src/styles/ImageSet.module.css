@@ -1,69 +1,79 @@
-.Container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.Image_Container{
-    width: 30%;          /* 가로 폭은 그대로 */
-    height: 200px;       /* 원하는 고정 높이 */
-    position: relative;
-    margin: 0 10%;
+.Image_Container {
+  width: 30%; /* 가로 폭은 그대로 */
+  height: 200px; /* 원하는 고정 높이 */
+  position: relative;
+  margin: 0 10%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
 }
 
 .ImageView {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;  /* cover → contain으로 변경 */
-    background-color: #f0f0f0; /* optional, 빈 공간 채우기 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* cover → contain으로 변경 */
+  background-color: var(--line-soft); /* optional, 빈 공간 채우기 */
 }
 
 .Trash {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 20px;
-    height: 20px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
 }
 
-.Icon{
-    width: 25px;
-    height: 25px;
+.Icon {
+  width: 25px;
+  height: 25px;
 }
-
 
 /* 업로드 버튼 */
 
 .UploadBtn {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
 }
 
 .UploadBtn label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 3px 25px;
-    border: 1px solid #215294;
-    border-radius: 10px;
-    background-color: white;
-    color: #215294;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 22px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--card);
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .UploadBtn label:hover {
-    background-color: #215294;
-    color: white;
+  border-color: var(--blue-600);
+  background-color: var(--blue-050);
+  color: var(--blue-600);
 }
 
 .UploadBtn label div {
-    line-height: 25px;
-    font-size: 14px;
+  line-height: 25px;
+  font-size: 14px;
 }

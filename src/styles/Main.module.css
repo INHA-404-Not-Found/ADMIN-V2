@@ -1,22 +1,245 @@
-.Logo_Container {
-    display: flex;
-    flex-direction: row; /* 가로 나열 */
+/* 사이드바 (로고 + 메뉴) css */
 
-    align-items: center; /* 세로축 가운데 정렬 */
-    gap: 8px;
-
-    margin: 25px 0 10px;
-    color: #1C63B7;
+.Layout {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  height: 100%;
 }
+
+.Content {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.Sidebar {
+  background: var(--navy-900);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.SidebarInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24px 18px 20px;
+}
+
+/* 로고 --------------------------------------------------------- */
+
+.Logo_Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 인하대 인장은 흰 바탕에서만 읽히므로 원형 칩 위에 올린다 */
+.Logo_Badge {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.Logo_Badge img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.Logo_Title {
+  font-family: var(--font-semibold);
+  font-size: 17px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.Logo_Sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 메뉴 --------------------------------------------------------- */
 
 .Menu_Container {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 20px 10px;
-
-    font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  flex: 1;
 }
 
-.Menu_Container img {
-    width: 20px;
+.Profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.Profile img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+}
+
+.ProfileName {
+  font-family: var(--font-semibold);
+  font-size: 14px;
+  color: #fff;
+}
+
+.ProfileMeta {
+  margin-top: 2px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ProfileId {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.NavGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.NavLabel {
+  margin-bottom: 8px;
+  padding-left: 12px;
+
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.NavItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.NavItem img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+}
+
+.NavItem:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.NavItem:hover img {
+  opacity: 0.9;
+}
+
+.NavItemActive {
+  background: var(--blue-600);
+  color: #fff;
+  font-family: var(--font-semibold);
+}
+
+.NavItemActive img,
+.NavItemActive:hover img {
+  opacity: 1;
+}
+
+.NavItemActive:hover {
+  background: var(--blue-600);
+}
+
+.Logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: auto;
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.Logout img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+}
+
+.Logout:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .Sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .SidebarInner {
+    padding: 16px;
+  }
+
+  .Menu_Container {
+    gap: 18px;
+  }
+
+  .Logout {
+    margin-top: 8px;
+  }
+
+  .Layout {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+  }
+
+  .Content {
+    overflow-y: visible;
+    height: auto;
+  }
 }

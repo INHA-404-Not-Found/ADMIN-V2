@@ -55,8 +55,7 @@ export default function GainPostEdit({ onClose, setType, postId }) {
         display: "flex",
         flexDirection: "column",
         height: "80vh",
-        borderRadius: "8px",
-        padding: "15px",
+        padding: "12px 0 0",
       }}
     >
       {/* Header */}
@@ -65,12 +64,12 @@ export default function GainPostEdit({ onClose, setType, postId }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          borderBottom: "1px solid #ddd",
+          borderBottom: "1px solid var(--line)",
           paddingBottom: "8px",
           marginBottom: "15px",
         }}
       >
-        <div style={{ fontWeight: "bold" }}>습득 게시물 수정</div>
+        <div style={{ fontFamily: "var(--font-semibold)", fontSize: "16px" }}>습득 게시물 수정</div>
         <img
           src="./images/close.png"
           alt="close"
@@ -111,28 +110,14 @@ export default function GainPostEdit({ onClose, setType, postId }) {
         }}
       >
         <button
-          style={{
-            backgroundColor: "white",
-            color: "#215294",
-            border: "1px solid #215294",
-            borderRadius: "8px",
-            padding: "8px 40px",
-            cursor: "pointer",
-          }}
+          className="btn btnGhost"
           onClick={() => setType("gain post")}
         >
           취소하기
         </button>
 
         <button
-          style={{
-            backgroundColor: "#215294",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            padding: "8px 40px",
-            cursor: "pointer",
-          }}
+          className="btn btnPrimary"
           onClick={() => {
             handleSave();
             onClose();
@@ -142,14 +127,7 @@ export default function GainPostEdit({ onClose, setType, postId }) {
         </button>
 
         <button
-          style={{
-            backgroundColor: "#215294",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            padding: "8px 40px",
-            cursor: "pointer",
-          }}
+          className="btn btnDanger"
           onClick={() => {
             if(window.confirm("삭제하시겠습니까?")){
               alert("성공!");

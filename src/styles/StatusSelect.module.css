@@ -1,0 +1,41 @@
+/* 목록에서 상태를 바로 바꾸는 선택 상자 */
+
+.Select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  padding: 5px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+
+  font-family: var(--font-medium);
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.Select:hover {
+  filter: brightness(0.96);
+}
+
+.Uncompleted {
+  background-color: var(--amber-bg);
+  color: var(--amber-fg);
+}
+
+.Completed {
+  background-color: var(--green-bg);
+  color: var(--green-fg);
+}
+
+.Police {
+  background-color: var(--slate-bg);
+  color: var(--slate-fg);
+}
+
+/* 펼쳤을 때 목록은 기본 색으로 */
+.Select option {
+  background-color: var(--card);
+  color: var(--text);
+}

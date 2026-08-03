@@ -20,12 +20,12 @@ export default function ReceiverRegist ({ onClose, handleSave, postId }) {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    borderBottom: "1px solid #ddd",
+                    borderBottom: "1px solid var(--line)",
                     paddingBottom: "8px",
                     marginBottom: "15px",
                 }}
             >
-                <div style={{ fontWeight: "bold" }}>수령인 등록</div>
+                <div style={{ fontFamily: "var(--font-semibold)", fontSize: "16px" }}>수령인 등록</div>
 
                 <div>
                     <img
@@ -72,28 +72,14 @@ export default function ReceiverRegist ({ onClose, handleSave, postId }) {
                 }}
             >
                 <button
-                    style={{
-                        backgroundColor: "white",
-                        color: "#215294",
-                        border: "1px solid #215294",
-                        borderRadius: "8px",
-                        padding: "8px 40px",
-                        cursor: "pointer",
-                    }}
+                    className="btn btnGhost"
                     onClick={onClose}
                 >
                     취소하기
                 </button>
 
                 <button
-                    style={{
-                        backgroundColor: "#215294",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        padding: "8px 40px",
-                        cursor: "pointer",
-                    }}
+                    className="btn btnPrimary"
                     onClick={() => {
                         registerReceiver(postId, receiver, email, phoneNumber, studentId) 
                         handleSave();

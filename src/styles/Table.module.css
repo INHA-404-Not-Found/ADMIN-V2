@@ -1,72 +1,155 @@
+/* 분실물 대장 목록 표 */
+
 .Table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Pretendard-Regular', sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border-radius: 8px;
-  overflow: hidden;
+  font-size: 14px;
 }
 
 .Table thead {
-  background: #DADEE7;
-  color: #1a1a1a;
-  font-weight: 600;
-  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--card);
 }
 
-.Table th, .Table td {
-  border: none;
-  margin: 0;
+.Table thead th {
+  height: 44px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--line);
+
+  font-family: var(--font-medium);
+  font-size: 12px;
+  letter-spacing: 0.04em;
   text-align: center;
-  padding: 0 8px;
+  color: var(--text-3);
   white-space: nowrap;
 }
 
-.Table tbody tr {
-  height: 50px;
-  background-color: white;
-  font-family: 'Pretendard-Light';
-  transition: background 0.3s ease, transform 0.25s ease-in-out;
+.Table tbody td {
+  height: 52px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--line-soft);
+  text-align: center;
+  color: var(--text-2);
+  white-space: nowrap;
 }
 
-.Table tbody tr:hover {
-  background: linear-gradient(90deg, #f0f2f7, #DADEE7);
-  transform: scale(1.015);
+.Table tbody tr:last-child td {
+  border-bottom: none;
 }
 
-.Table tbody tr:nth-child(even) {
-  background-color: #f5f7fa;
+.Table tbody tr:hover td {
+  background-color: #f7fafd;
 }
 
+/* 상태별 좌측 스트립: 보관 태그 모티프 */
+.Table tbody td:first-child {
+  position: relative;
+}
+
+.Table tbody td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--strip, transparent);
+}
+
+.Table tbody tr[data-status="UNCOMPLETED"] {
+  --strip: var(--amber-fg);
+}
+
+.Table tbody tr[data-status="COMPLETED"] {
+  --strip: var(--green-fg);
+}
+
+.Table tbody tr[data-status="POLICE"] {
+  --strip: var(--slate-fg);
+}
+
+.Table input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--blue-600);
+  cursor: pointer;
+}
+
+/* 번호: 태그 번호 */
+.Table tbody td:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+
+.Table tbody td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+}
+
+/* 습득 / 분실 */
+.Table tbody td:nth-child(4) {
+  font-family: var(--font-medium);
+}
+
+.Table tbody tr[data-type="FIND"] td:nth-child(4) {
+  color: var(--blue-600);
+}
+
+.Table tbody tr[data-type="LOST"] td:nth-child(4) {
+  color: var(--amber-fg);
+}
+
+/* 제목: 클릭하면 상세 팝업 */
 .Table tbody td:nth-child(5) {
   text-align: left;
-  white-space: nowrap; /* 줄바꿈 방지 */
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 300px;
+
+  font-family: var(--font-medium);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.Table tbody td:nth-child(5):hover {
+  color: var(--blue-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .Table tbody td:nth-child(6) {
   text-align: left;
-  white-space: nowrap; /* 줄바꿈 방지 */
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px; 
+  max-width: 200px;
+  color: var(--text-3);
 }
 
-.Table tbody td.action {
-  padding: 6px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 0.85em;
-}
-
-.Table th:nth-child(1) { width: 20px; }   /* 체크박스 */
-.Table th:nth-child(2) { width: 40px; }   /* 번호 */
-.Table th:nth-child(3) { width: 90px; }  /* 날짜 */
-.Table th:nth-child(4) { width: 70px; }   /* 습득/분실 */
-.Table th:nth-child(5) { width: auto; }   /* 제목은 유동적 */
-.Table th:nth-child(6) { width: 100px; }  /* 카테고리 */
-.Table th:nth-child(7) { width: 80px; }   /* 작성자 */
-.Table th:nth-child(8) { width: 73px; }   /* 상태 */
+.Table th:nth-child(1) {
+  width: 44px;
+} /* 체크박스 */
+.Table th:nth-child(2) {
+  width: 64px;
+} /* 번호 */
+.Table th:nth-child(3) {
+  width: 96px;
+} /* 날짜 */
+.Table th:nth-child(4) {
+  width: 78px;
+} /* 습득/분실 */
+.Table th:nth-child(5) {
+  width: auto;
+} /* 제목은 유동적 */
+.Table th:nth-child(6) {
+  width: 140px;
+} /* 카테고리 */
+.Table th:nth-child(7) {
+  width: 90px;
+} /* 작성자 */
+.Table th:nth-child(8) {
+  width: 108px;
+} /* 상태 */

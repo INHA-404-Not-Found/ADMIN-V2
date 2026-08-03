@@ -1,67 +1,86 @@
+/* 물품 카테고리 관리 표 */
+
 .Table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Pretendard', sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border-radius: 8px;
-  overflow: hidden;
+  font-size: 14px;
 }
 
 .Table thead {
-  background: #DADEE7;
-  color: #1a1a1a;
-  font-weight: 600;
-  height: 60px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
+  background: var(--card);
 }
 
-.Table th, .Table td {
-  border: none; /* 기존 border 제거 */
-  margin: 0;
+.Table thead th {
+  height: 44px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--line);
+
+  font-family: var(--font-medium);
+  font-size: 12px;
+  letter-spacing: 0.04em;
   text-align: center;
-  padding: 0 8px;
+  color: var(--text-3);
   white-space: nowrap;
 }
 
-.Table tbody tr {
+.Table tbody td {
   height: 50px;
-  background-color: white;
-  font-family: 'Pretendard-Light';
-  transition: background 0.3s ease, transform 0.25s ease-in-out;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--line-soft);
+  text-align: center;
+  color: var(--text-2);
+  white-space: nowrap;
 }
 
-.Table tbody tr:hover {
-  background: linear-gradient(90deg, #f0f2f7, #DADEE7);
-  transform: scale(1.015);
+.Table tbody tr:last-child td {
+  border-bottom: none;
 }
 
-.Table tbody tr:nth-child(even) {
-  background-color: #f5f7fa;
+.Table tbody tr:hover td {
+  background-color: #f7fafd;
 }
 
-/* 액션 버튼 스타일 */
+/* 번호: 태그 번호 */
+.Table tbody td:nth-child(1) {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+  width: 80px;
+}
+
+/* 카테고리 이름 */
+.Table tbody td:nth-child(2) {
+  font-family: var(--font-medium);
+  color: var(--text);
+}
+
+/* 수정 / 삭제 */
+.Table th:nth-child(3),
+.Table th:nth-child(4) {
+  width: 110px;
+}
+
 .Table tbody td.action {
-  padding: 6px 10px;
-  border-radius: 5px;
   cursor: pointer;
-  font-weight: 500;
-  font-size: 0.85em;
+  font-size: 13px;
 }
 
 .Table tbody td.action.modify {
-  color: #4a90e2;
+  color: var(--blue-600);
 }
 
 .Table tbody td.action.modify:hover {
-  background-color: #e6f0ff;
+  background-color: var(--blue-050);
 }
 
 .Table tbody td.action.delete {
-  color: #e94e4e;
+  color: var(--danger-fg);
 }
 
 .Table tbody td.action.delete:hover {
-  background-color: #ffe6e6;
+  background-color: var(--danger-bg);
 }
