@@ -72,6 +72,34 @@
   font-family: inherit;
 }
 
+/* 필수 항목 표시 */
+.Req {
+  margin-left: 2px;
+  color: var(--danger-fg);
+}
+
+/* 이메일, 전화번호처럼 칸이 나뉜 입력 */
+.Split {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.Split [type="text"] {
+  min-width: 0;
+}
+
+.Sep {
+  flex: none;
+  color: var(--text-3);
+}
+
+/* 학번처럼 자릿수가 흔들리면 안 되는 값 */
+.Table2 input.Mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
 /* 체크박스 */
 .Table2 input[type="checkbox"] {
   width: 15px;
