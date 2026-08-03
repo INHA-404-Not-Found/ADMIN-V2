@@ -61,14 +61,16 @@ export default function StatusSelect({
   };
 
   return (
-    <select
-      className={`${styles.Select} ${statusClass[statusType]}`}
-      value={statusType}
-      onChange={handleChange}
-    >
-      <option value="미완료">미완료</option>
-      <option value="완료">완료</option>
-      <option value="인계됨">인계됨</option>
-    </select>
+    <span className={`${styles.Wrap} ${statusClass[statusType]}`}>
+      <select
+        className={styles.Select}
+        value={statusType}
+        onChange={handleChange}
+      >
+        <option value="미완료">미완료</option>
+        <option value="완료">완료</option>
+        <option value="인계됨">인계됨</option>
+      </select>
+    </span>
   );
 }

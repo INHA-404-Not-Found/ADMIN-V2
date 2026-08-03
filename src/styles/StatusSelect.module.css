@@ -1,36 +1,67 @@
 /* 목록에서 상태를 바로 바꾸는 선택 상자 */
 
+/* 상태 색은 이 래퍼가 정하고, 안쪽 select와 화살표가 물려받는다 */
+.Wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 읽기 전용 배지가 아니라 고를 수 있는 상자임을 알리는 화살표 */
+.Wrap::after {
+  content: "";
+  position: absolute;
+  right: 11px;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .Select {
   appearance: none;
   -webkit-appearance: none;
 
-  padding: 5px 12px;
+  padding: 5px 28px 5px 12px;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
 
+  color: inherit;
+  background-color: var(--pill-bg);
+
   font-family: var(--font-medium);
   font-size: 12px;
-  text-align: center;
   cursor: pointer;
-  transition: filter 0.15s ease;
+  transition:
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .Select:hover {
   filter: brightness(0.96);
 }
 
+.Select:focus-visible {
+  outline: none;
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px var(--blue-050);
+}
+
 .Uncompleted {
-  background-color: var(--amber-bg);
+  --pill-bg: var(--amber-bg);
   color: var(--amber-fg);
 }
 
 .Completed {
-  background-color: var(--green-bg);
+  --pill-bg: var(--green-bg);
   color: var(--green-fg);
 }
 
 .Police {
-  background-color: var(--slate-bg);
+  --pill-bg: var(--slate-bg);
   color: var(--slate-fg);
 }
 
