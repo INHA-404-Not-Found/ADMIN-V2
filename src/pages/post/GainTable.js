@@ -1,5 +1,6 @@
 // GainTable.jsx
 import tableStyles from "../../styles/Table2.module.css";
+import { DateTimeFormat } from "../../utils/DateFormat";
 
 export default function GainTable({ postDetail, receiver }) {
   return (
@@ -15,23 +16,27 @@ export default function GainTable({ postDetail, receiver }) {
         </tr>
         <tr>
           <th>작성 날짜</th>
-          <td>2025.10.10.금</td>
+          <td>{DateTimeFormat(postDetail.createdAt) || "-"}</td>
         </tr>
         <tr>
           <th>물품 카테고리</th>
           <td>
-            {Array.isArray(postDetail.categories) && postDetail.categories.map((cat, idx) => (
-              <span key={idx}>
-                {cat}{idx < postDetail.categories.length - 1 ? ' / ' : ''}
-              </span>
-            ))}
+            {Array.isArray(postDetail.categories) &&
+              postDetail.categories.map((cat, idx) => (
+                <span key={idx}>
+                  {cat}
+                  {idx < postDetail.categories.length - 1 ? " / " : ""}
+                </span>
+              ))}
           </td>
         </tr>
         <tr>
           <th>습득 장소</th>
           <td>
             {postDetail.locationName}{" "}
-            {postDetail.locationDetail ? `( ${postDetail.locationDetail} )` : ""}
+            {postDetail.locationDetail
+              ? `( ${postDetail.locationDetail} )`
+              : ""}
           </td>
         </tr>
         <tr>
@@ -44,10 +49,10 @@ export default function GainTable({ postDetail, receiver }) {
             {postDetail.status === "UNCOMPLETED"
               ? "미완료"
               : postDetail.status === "COMPLETED"
-              ? "완료"
-              : postDetail.status === "POLICE"
-              ? "인계"
-              : ""}
+                ? "완료"
+                : postDetail.status === "POLICE"
+                  ? "인계"
+                  : ""}
           </td>
         </tr>
         <tr>

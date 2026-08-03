@@ -1,5 +1,6 @@
 // LostTable.jsx
 import tableStyles from "../../styles/Table2.module.css";
+import { DateTimeFormat } from "../../utils/DateFormat";
 
 export default function LostTable({ postDetail }) {
   return (
@@ -15,16 +16,18 @@ export default function LostTable({ postDetail }) {
         </tr>
         <tr>
           <th>작성 날짜</th>
-          <td>2025.10.10.금</td>
+          <td>{DateTimeFormat(postDetail.createdAt) || "-"}</td>
         </tr>
         <tr>
           <th>물품 카테고리</th>
           <td>
-            {Array.isArray(postDetail.categories) && postDetail.categories.map((cat, idx) => (
-              <span key={idx}>
-                {cat}{idx < postDetail.categories.length - 1 ? ' / ' : ''}
-              </span>
-            ))}
+            {Array.isArray(postDetail.categories) &&
+              postDetail.categories.map((cat, idx) => (
+                <span key={idx}>
+                  {cat}
+                  {idx < postDetail.categories.length - 1 ? " / " : ""}
+                </span>
+              ))}
           </td>
         </tr>
         <tr>
