@@ -31,17 +31,28 @@ export default function LostPost({ onClose, setType, postId }) {
           marginBottom: "15px",
         }}
       >
-        <div style={{ fontFamily: "var(--font-semibold)", fontSize: "16px" }}>분실 게시물</div>
-        <img
-          src="./images/close.png"
-          alt="close"
+        <div style={{ fontFamily: "var(--font-semibold)", fontSize: "16px" }}>
+          분실 게시물
+        </div>
+        <button
+          type="button"
           onClick={onClose}
+          aria-label="닫기"
           style={{
-            width: "20px",
-            height: "20px",
+            display: "flex",
+            padding: "4px",
+            border: "none",
+            borderRadius: "var(--radius-sm)",
+            background: "none",
             cursor: "pointer",
           }}
-        />
+        >
+          <img
+            src="./images/close.png"
+            alt=""
+            style={{ width: "20px", height: "20px" }}
+          />
+        </button>
       </div>
 
       {/* Scrollable content */}
@@ -84,7 +95,7 @@ export default function LostPost({ onClose, setType, postId }) {
         <button
           className="btn btnDanger"
           onClick={() => {
-            if(window.confirm("삭제하시겠습니까?")){
+            if (window.confirm("삭제하시겠습니까?")) {
               alert("성공!");
               removePost(postId);
               onClose();

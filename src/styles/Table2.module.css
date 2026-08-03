@@ -72,6 +72,64 @@
   font-family: inherit;
 }
 
+/* 상태 배지 — 목록의 상태 색과 같은 체계 */
+.Badge {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-medium);
+  font-size: 12px;
+}
+
+.BadgeUncompleted {
+  background-color: var(--amber-bg);
+  color: var(--amber-fg);
+}
+
+.BadgeCompleted {
+  background-color: var(--green-bg);
+  color: var(--green-fg);
+}
+
+.BadgePolice {
+  background-color: var(--slate-bg);
+  color: var(--slate-fg);
+}
+
+/* 물품 카테고리 */
+.Chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.Chip {
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background-color: var(--blue-050);
+  color: var(--blue-600);
+  font-size: 12px;
+}
+
+/* 수령인처럼 항목이 여러 개인 값 */
+.Stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.StackLabel {
+  display: inline-block;
+  width: 44px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+/* 본문은 줄바꿈을 그대로 */
+.Content {
+  white-space: pre-wrap;
+}
+
 /* 필수 항목 표시 */
 .Req {
   margin-left: 2px;

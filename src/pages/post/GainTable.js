@@ -1,14 +1,19 @@
 // GainTable.jsx
 import tableStyles from "../../styles/Table2.module.css";
 import { DateTimeFormat } from "../../utils/DateFormat";
+import StatusBadge from "./StatusBadge";
 
 export default function GainTable({ postDetail, receiver }) {
+  const categories = Array.isArray(postDetail.categories)
+    ? postDetail.categories
+    : [];
+
   return (
     <table className={tableStyles.Table2}>
       <tbody>
         <tr>
           <th>번호</th>
-          <td>{postDetail.postId}</td>
+          <td>#{postDetail.postId}</td>
         </tr>
         <tr>
           <th>작성자</th>
@@ -21,22 +26,24 @@ export default function GainTable({ postDetail, receiver }) {
         <tr>
           <th>물품 카테고리</th>
           <td>
-            {Array.isArray(postDetail.categories) &&
-              postDetail.categories.map((cat, idx) => (
-                <span key={idx}>
-                  {cat}
-                  {idx < postDetail.categories.length - 1 ? " / " : ""}
-                </span>
-              ))}
+            {categories.length > 0 ? (
+              <div className={tableStyles.Chips}>
+                {categories.map((cat, idx) => (
+                  <span key={idx} className={tableStyles.Chip}>
+                    {cat}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              "-"
+            )}
           </td>
         </tr>
         <tr>
           <th>습득 장소</th>
           <td>
-            {postDetail.locationName}{" "}
-            {postDetail.locationDetail
-              ? `( ${postDetail.locationDetail} )`
-              : ""}
+            {postDetail.locationName || "-"}
+            {postDetail.locationDetail ? ` (${postDetail.locationDetail})` : ""}
           </td>
         </tr>
         <tr>
@@ -46,21 +53,34 @@ export default function GainTable({ postDetail, receiver }) {
         <tr>
           <th>상태</th>
           <td>
-            {postDetail.status === "UNCOMPLETED"
-              ? "미완료"
-              : postDetail.status === "COMPLETED"
-                ? "완료"
-                : postDetail.status === "POLICE"
-                  ? "인계"
-                  : ""}
+            <StatusBadge status={postDetail.status} />
           </td>
         </tr>
         <tr>
           <th>수령인</th>
           <td>
-            {receiver.name
-              ? `${receiver.receiverId} / ${receiver.name} / ${receiver.email} / ${receiver.phoneNumber} / ${receiver.studentId}`
-              : "-"}
+            {receiver.name ? (
+              <div className={tableStyles.Stack}>
+                <div>
+                  <span className={tableStyles.StackLabel}>이름</span>
+                  {receiver.name}
+                </div>
+                <div>
+                  <span className={tableStyles.StackLabel}>학번</span>
+                  {receiver.studentId || "-"}
+                </div>
+                <div>
+                  <span className={tableStyles.StackLabel}>이메일</span>
+                  {receiver.email}
+                </div>
+                <div>
+                  <span className={tableStyles.StackLabel}>전화</span>
+                  {receiver.phoneNumber}
+                </div>
+              </div>
+            ) : (
+              "-"
+            )}
           </td>
         </tr>
         <tr>
@@ -69,7 +89,7 @@ export default function GainTable({ postDetail, receiver }) {
         </tr>
         <tr>
           <th>내용</th>
-          <td>{postDetail.content || "-"}</td>
+          <td className={tableStyles.Content}>{postDetail.content || "-"}</td>
         </tr>
       </tbody>
     </table>
