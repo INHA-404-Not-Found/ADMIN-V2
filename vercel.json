@@ -1,0 +1,9 @@
+{
+  "buildCommand": "CI=false react-scripts build",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://be-v2.onrender.com/:path*"
+    }
+  ]
+}
