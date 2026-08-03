@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
-import imageSet from '../styles/ImageSet.module.css';
+import { useEffect, useState } from "react";
+import imageSet from "../styles/ImageSet.module.css";
 
-export default function ImageSetEdit({ images = [], setImages, setChangeImage }) {
+export default function ImageSetEdit({
+  images = [],
+  setImages,
+  setChangeImage,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -10,13 +14,13 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
+      setCurrentIndex((prev) => prev - 1);
     }
   };
 
   const handleNext = () => {
     if (currentIndex < images.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex((prev) => prev + 1);
     }
   };
 
@@ -40,22 +44,22 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
     setChangeImage(true);
   };
 
-    const handleUpload = (e) => {
-        const selectedFiles = Array.from(e.target.files || []);
+  const handleUpload = (e) => {
+    const selectedFiles = Array.from(e.target.files || []);
 
-        // 이전 이미지 제거하고 새로 업로드한 것만 넣기
-        setImages(selectedFiles);
+    // 이전 이미지 제거하고 새로 업로드한 것만 넣기
+    setImages(selectedFiles);
 
-        setChangeImage(true);
+    setChangeImage(true);
 
-        // input 초기화
-        e.target.value = "";
-    };
+    // input 초기화
+    e.target.value = "";
+  };
 
   const getImageSrc = (img) => {
     if (typeof img === "string") {
       // 서버에서 가져온 이미지 경로
-      return `https://lost-inha.kro.kr${img}`;
+      return `https://be-v2.onrender.com${img}`;
     } else if (img instanceof File) {
       // 업로드한 파일
       return URL.createObjectURL(img);
@@ -71,9 +75,9 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
           src="./images/left.png"
           alt="left"
           onClick={handlePrev}
-          style={{ 
-            cursor: currentIndex > 0 ? 'pointer' : 'default',
-            opacity: currentIndex > 0 ? 1 : 0.3 // 투명도 조절
+          style={{
+            cursor: currentIndex > 0 ? "pointer" : "default",
+            opacity: currentIndex > 0 ? 1 : 0.3, // 투명도 조절
           }}
         />
 
@@ -98,14 +102,14 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
           )}
         </div>
 
-        <img 
+        <img
           className={imageSet.Icon}
           src="./images/right.png"
           alt="right"
           onClick={handleNext}
           style={{
-            cursor: currentIndex < images.length - 1  ? 'pointer' : 'default',
-            opacity: currentIndex < images.length - 1  ? 1 : 0.3 // 투명도 조절
+            cursor: currentIndex < images.length - 1 ? "pointer" : "default",
+            opacity: currentIndex < images.length - 1 ? 1 : 0.3, // 투명도 조절
           }}
         />
       </div>
@@ -113,9 +117,18 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
       <div className={imageSet.UploadBtn}>
         <label
           htmlFor="fileUpload"
-          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
+          style={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+          }}
         >
-          <img style={{ height: '25px' }} src="./images/upload.png" alt="upload" />
+          <img
+            style={{ height: "25px" }}
+            src="./images/upload.png"
+            alt="upload"
+          />
           <div>사진 업로드</div>
         </label>
         <input
@@ -124,7 +137,7 @@ export default function ImageSetEdit({ images = [], setImages, setChangeImage })
           accept="image/*"
           multiple
           onChange={handleUpload}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
       </div>
     </div>
