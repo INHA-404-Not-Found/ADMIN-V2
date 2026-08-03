@@ -92,8 +92,17 @@ export default function GainPost({ onClose, setType, postId }) {
           marginTop: "15px",
         }}
       >
+        {postDetail.status !== "COMPLETED" && (
+          <button
+            className="btn btnPrimary"
+            onClick={() => setType("regist receiver")}
+          >
+            완료 표시하기
+          </button>
+        )}
+
         <button
-          className="btn btnPrimary"
+          className="btn btnGhost"
           onClick={() => setType("gain post edit")}
         >
           수정하기
