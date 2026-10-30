@@ -13,7 +13,7 @@ const api = axios.create({
     const refreshRes = await axios.post("/api/auth/refresh", {}, { withCredentials: true });
     
     
-    const newAccessToken = refreshRes.data.accessToken;
+    const newAccessToken = refreshRes.data.data.accessToken;
     TokenStore.setToken(newAccessToken);
 
     profile();
@@ -65,9 +65,9 @@ api.interceptors.response.use(
           { withCredentials: true }
         );
 
-        const newAccessToken = refreshRes.data.accessToken;
+        const newAccessToken = refreshRes.data.data.accessToken;
         TokenStore.setToken(newAccessToken);
-        
+
 
         // 실패했던 요청에 새 토큰 붙이기
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;

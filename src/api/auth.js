@@ -21,7 +21,7 @@ export const login = async (studentId, password, navigate) => {
             isWeb: true
         });
 
-        TokenStore.setToken(res.data.accessToken);
+        TokenStore.setToken(res.data.data.accessToken);
         
         console.log(res.data);
         await profile();
