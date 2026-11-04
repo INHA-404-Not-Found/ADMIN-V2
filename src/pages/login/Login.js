@@ -52,6 +52,7 @@ export default function Login() {
                 type="text"
                 className={`${styles.Input_txt} ${styles.Input_Id}`}
                 placeholder="12201234"
+                autoFocus
                 onChange={(e) => setStudentId(e.target.value)}
               />
             </div>
