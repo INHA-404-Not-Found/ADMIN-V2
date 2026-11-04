@@ -1,6 +1,6 @@
-import GainTable from "./ReceiverRegistTable.js";
-import ImageSet from "../../components/ImageSet.js";
-import ReceiverRegistTable from "./ReceiverRegistTable.js";
+import GainTable from "./ReceiverRegistTable.jsx";
+import ImageSet from "../../components/ImageSet.jsx";
+import ReceiverRegistTable from "./ReceiverRegistTable.jsx";
 import { useState } from "react";
 import { registerReceiver } from "../../api/receiver.js";
 
