@@ -105,7 +105,7 @@ export default function MainBoard({
   return (
     <div className={styles.Container}>
       <header>
-        <h1 className={styles.Title_Container}>분실물 대장</h1>
+        <h1 className={styles.Title_Container}>습득·분실물 관리</h1>
         <p className={styles.Page_Desc}>
           습득·분실 게시글을 확인하고 처리합니다.
         </p>

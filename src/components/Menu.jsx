@@ -50,7 +50,7 @@ export default function Menu({ setShowPopUp, setType }) {
 
         <Link to="/" className={navItemClass("/")}>
           <img src="./images/dashboard.png" alt="" />
-          분실물 대장
+          습득·분실물 관리
         </Link>
 
         <Link to="/itemCategory" className={navItemClass("/itemCategory")}>
