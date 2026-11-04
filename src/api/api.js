@@ -48,10 +48,10 @@ api.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
 
-    // 403 에러 -> refresh 한 번하고, 로그인 페이지로
-    if (error.response?.status === 403) {
-      if (isRefreshing) {
-        // 이미 refresh 요청 중이면 그대로 reject해서 무한 반복 방지
+    // 401 에러 -> refresh 한 번하고, 로그인 페이지로
+    if (error.response?.status === 401) {
+      // 이미 refresh 요청 중이거나 재시도한 요청이면 그대로 reject해서 무한 반복 방지
+      if (isRefreshing || originalRequest._retry) {
         return Promise.reject(error);
       }
 
@@ -77,7 +77,10 @@ api.interceptors.response.use(
       } catch (refreshError) {
         console.error("토큰 재발급 실패", refreshError);
         TokenStore.clearToken();
-        window.location.href = "/login";
+        // 이미 로그인 페이지면 이동하지 않음 (새로고침 무한 루프 방지)
+        if (window.location.pathname !== "/login") {
+          window.location.href = "/login";
+        }
         isRefreshing = false;
         return Promise.reject(refreshError);
       }
