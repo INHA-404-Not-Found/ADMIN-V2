@@ -27,7 +27,6 @@ export const login = async (studentId, password, navigate) => {
         await profile();
         
         console.log("로그인 성공");
-        alert(MY.getMY().name + "님 로그인하였습니다.");
 
         navigate('/');
     } catch (err) {
