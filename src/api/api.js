@@ -41,7 +41,7 @@ api.interceptors.request.use(cfg => {
     return cfg;
 });
 
-let isRefreshing = false; // refresh 한 번만 되게
+let refreshPromise = null; // 진행 중인 refresh를 공유해서 동시에 401이 나도 한 번만 요청
 
 api.interceptors.response.use(
   res => res,
@@ -50,29 +50,31 @@ api.interceptors.response.use(
 
     // 401 에러 -> refresh 한 번하고, 로그인 페이지로
     if (error.response?.status === 401) {
-      // 이미 refresh 요청 중이거나 재시도한 요청이면 그대로 reject해서 무한 반복 방지
-      if (isRefreshing || originalRequest._retry) {
+      // 재시도한 요청이면 그대로 reject해서 무한 반복 방지
+      if (originalRequest._retry) {
         return Promise.reject(error);
       }
 
       originalRequest._retry = true; // 재시도 표시
-      isRefreshing = true;
 
       try {
-        const refreshRes = await axios.post(
-          "/api/auth/refresh",
-          {},
-          { withCredentials: true }
-        );
+        // 이미 refresh 요청 중이면 새로 보내지 않고 그 결과를 기다림
+        if (!refreshPromise) {
+          refreshPromise = axios
+            .post("/api/auth/refresh", {}, { withCredentials: true })
+            .then((refreshRes) => refreshRes.data.data.accessToken)
+            .finally(() => {
+              refreshPromise = null;
+            });
+        }
 
-        const newAccessToken = refreshRes.data.data.accessToken;
+        const newAccessToken = await refreshPromise;
         TokenStore.setToken(newAccessToken);
 
 
         // 실패했던 요청에 새 토큰 붙이기
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
-        isRefreshing = false;
         return api(originalRequest); // 재요청
       } catch (refreshError) {
         console.error("토큰 재발급 실패", refreshError);
@@ -81,7 +83,6 @@ api.interceptors.response.use(
         if (window.location.pathname !== "/login") {
           window.location.href = "/login";
         }
-        isRefreshing = false;
         return Promise.reject(refreshError);
       }
     }
