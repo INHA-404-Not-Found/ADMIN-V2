@@ -28,7 +28,7 @@ export const getAllCategories = async (setCategoryList) => {
 
         console.log("getAllCategories: ", res.data);
         
-        setCategoryList(res.data);
+        setCategoryList(res.data.data);
     } catch (err) {
         console.error('에러 발생: ', err);
         alert("getAllCategories 실패");
